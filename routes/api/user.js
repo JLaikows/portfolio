@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const bcrypt = require("bcryptjs");
-const User = require("../../models/User");
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
-require('dotenv').config()
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../../models/User');
+const passport = require('passport');
+require('dotenv').config();
 
-router.post("/register", (req, res) => {
+router.post('/register', (req, res) => {
   /* 
     Used to regist new users and return account info
 
@@ -22,24 +22,23 @@ router.post("/register", (req, res) => {
     if (user) {
       return res
         .status(400)
-        .json({ [body.handle]: "Name has already been taken" });
+        .json({ [body.handle]: 'Name has already been taken' });
     } else {
-    try{
+      try {
         const newUser = new User({
           username: body.username,
           password: body.password,
         });
-  
-  
+
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
-              console.log(err)
+            console.log(err);
             if (err) throw err;
             newUser.password = hash;
             newUser
               .save()
               .then((user) => {
-                console.log("New User Created => ", user);
+                console.log('New User Created => ', user);
                 res.json(user);
               })
               .catch((err) => {
@@ -48,14 +47,14 @@ router.post("/register", (req, res) => {
               });
           });
         });
-    } catch (e) {
+      } catch (e) {
         res.status(500).json({ error: e });
-    }
+      }
     }
   });
 });
 
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
   /* 
     Used to login users an return a token + account info 
 
@@ -69,7 +68,7 @@ router.post("/login", (req, res) => {
 
   User.findOne({ username: username }).then((user) => {
     if (!user) {
-      return res.status(404).json({ username: "This user does not exist" });
+      return res.status(404).json({ username: 'This user does not exist' });
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
@@ -81,21 +80,21 @@ router.post("/login", (req, res) => {
           process.env.MONGODB_URI,
           { expiresIn: 3600 },
           (err, token) => {
-            console.log("User Logged In ==>", user);
+            console.log('User Logged In ==>', user);
             res.json({
               user: user,
-              token: "Bearer " + token,
+              token: 'Bearer ' + token,
             });
-          }
+          },
         );
       } else {
-        return res.status(400).json({ password: "Incorrect Password" });
+        return res.status(400).json({ password: 'Incorrect Password' });
       }
     });
   });
 });
 
-router.patch("/change-password", (req, res) => {
+router.patch('/change-password', (req, res) => {
   /* 
     Used to change a users password
 
@@ -109,7 +108,7 @@ router.patch("/change-password", (req, res) => {
   const { username, oldPassword, newPassword } = req.body;
   User.findOne({ username: username }).then((user) => {
     if (!user) {
-      return res.status(404).json({ error: "This user does not exist" });
+      return res.status(404).json({ error: 'This user does not exist' });
     }
 
     bcrypt.compare(oldPassword, user.password).then((isMatch) => {
@@ -131,20 +130,20 @@ router.patch("/change-password", (req, res) => {
           });
         });
       } else {
-        return res.status(400).json({ password: "Incorrect Old Password" });
+        return res.status(400).json({ password: 'Incorrect Old Password' });
       }
     });
   });
 });
 
 router.get(
-  "/current",
-  passport.authenticate("jwt", { session: false }),
+  '/current',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     res.json({
       username: req.user.username,
     });
-  }
+  },
 );
 
 module.exports = router;
