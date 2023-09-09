@@ -4,11 +4,9 @@ import { UserStoreProvider } from './hooks/user-auth';
 
 const App: FC = () => {
   return (
-    <div>
-      <UserStoreProvider value={null}>
-        <LoginForm />
-      </UserStoreProvider>
-    </div>
+    <UserStoreProvider value={null}>
+      <LoginForm />
+    </UserStoreProvider>
   );
 }
 

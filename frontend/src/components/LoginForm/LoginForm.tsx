@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import { Box, Button, TextField, CircularProgress } from '@mui/material'
 import * as styles from "./styles"
 import { useUserStore } from '../../hooks/user-auth'
+import './style.css'
 
 type LoginFormInfo = {
     username: string,
