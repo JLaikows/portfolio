@@ -12,14 +12,13 @@
 
 ### Frontend
 *in progress*
-- component
 
 *backlog*
 - update headers based on tags
-- build a base working product
 - infi scroll for articles
 - centralize color scheme
 - set up api url for prod
+- fix prettier formatting
 
 ## full scope
 - multiple users

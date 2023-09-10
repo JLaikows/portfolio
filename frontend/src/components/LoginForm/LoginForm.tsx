@@ -1,8 +1,6 @@
 import React, { FC, useState } from 'react'
 import { Box, Button, TextField, CircularProgress } from '@mui/material'
-import * as styles from "./styles"
 import { useUserStore } from '../../hooks/user-auth'
-import './style.css'
 
 type LoginFormInfo = {
     username: string,
@@ -81,4 +79,31 @@ export const LoginForm: FC = () => {
             </form>
         </Box>
     )
+}
+
+const styles = {
+    loginFormContainer: {
+        backgroundColor: '#F6F6F6',
+        padding: '20px 20px 10px 20px',
+        border: "3px solid #221D23",
+        borderRadius: '15px',
+        width: '500px'
+    },
+    loginFormHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    loginFormSelectors: (isSelected: boolean) => ({
+        color: "#221D23",
+        fontSize: '40px',
+        fontWeight: '400',
+        cursor: 'auto',
+        ...(!isSelected && {
+            color: "#534359",
+            "&:hover": {
+                cursor: 'pointer',
+            }
+        })
+    })
 }

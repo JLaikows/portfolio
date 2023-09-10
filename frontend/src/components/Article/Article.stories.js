@@ -1,3 +1,4 @@
+import { ArticleSizes } from "../../types/article";
 import { Article } from "./Article";
 
 export default {
@@ -19,44 +20,53 @@ const article = {
     description: 'The red dog jumped over a house. He ran away. The parents were sad. They ran away. Everyone ran away.'
 }
 
-export const Default = {
+export const XSmall = {
     args: {
         article,
         // color: {
         //     options: [String('#221D23'), String('#4F3824'), String('#D1603D'), String('#DDB967'), String('#D0E37F'), String('#534359')],
         // }
-        color: '#221D23'
-
+        color: '#221D23',
+        size: ArticleSizes.xsmall
     },
 };
-
-export const Brown = {
+export const Small = {
     args: {
         article,
-        color: '#4F3824'
+        // color: {
+        //     options: [String('#221D23'), String('#4F3824'), String('#D1603D'), String('#DDB967'), String('#D0E37F'), String('#534359')],
+        // }
+        color: '#221D23',
+        size: ArticleSizes.small
     },
 };
-export const Cinnabar = {
+export const Medium = {
     args: {
         article,
-        color: '#D1603D'
+        // color: {
+        //     options: [String('#221D23'), String('#4F3824'), String('#D1603D'), String('#DDB967'), String('#D0E37F'), String('#534359')],
+        // }
+        color: '#221D23',
+        size: ArticleSizes.medium
     },
 };
-export const Gold = {
+export const Large = {
     args: {
         article,
-        color: '#DDB967'
+        // color: {
+        //     options: [String('#221D23'), String('#4F3824'), String('#D1603D'), String('#DDB967'), String('#D0E37F'), String('#534359')],
+        // }
+        color: '#221D23',
+        size: ArticleSizes.large
     },
 };
-export const Mindaro = {
+export const XLarge = {
     args: {
         article,
-        color: '#D0E37F'
-    },
-};
-export const EnglishViolet = {
-    args: {
-        article,
-        color: '#534359'
+        // color: {
+        //     options: [String('#221D23'), String('#4F3824'), String('#D1603D'), String('#DDB967'), String('#D0E37F'), String('#534359')],
+        // }
+        color: '#221D23',
+        size: ArticleSizes.xlarge
     },
 };

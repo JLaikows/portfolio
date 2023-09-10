@@ -1,4 +1,4 @@
-import { Wheel } from "./Wheel";
+import { ArticleBoard } from "./ArticleBoard";
 
 const article = {
     title: 'Example Article',
@@ -9,18 +9,18 @@ const article = {
 }
 
 const articles = []
-for (let i = 10; i > 0; i--) {
+for (let i = 50; i > 0; i--) {
     articles.push(article)
 }
 
 export default {
-    title: 'Wheel',
-    component: Wheel,
+    title: 'Article Board',
+    component: ArticleBoard,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
     tags: ['components'],
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
-        layout: 'centered',
+        layout: 'fullscreen',
     },
 };
 
