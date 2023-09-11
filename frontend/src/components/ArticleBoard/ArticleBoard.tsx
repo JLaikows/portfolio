@@ -28,7 +28,7 @@ export const ArticleBoard: FC<IWheelProps> = ({ articles }) => {
 }
 
 const styles = {
-    articleBoardContainer: { position: 'relative', left: '50%' },
+    articleBoardContainer: { position: 'relative', left: '54%' },
     articleBoardInnerContainer: {
         display: 'grid',
         gridTemplateColumns:
